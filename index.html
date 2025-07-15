@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Engagement Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-chart-line"></i> Media Engagement Portal</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="refreshData()">
+                        <i class="fas fa-sync-alt"></i> Refresh Data
+                    </button>
+                    <div class="time-display" id="currentTime"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard">
+            <!-- Key Metrics Row -->
+            <div class="metrics-row">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Total Impressions</h3>
+                        <p class="metric-value" id="totalImpressions">1,247</p>
+                        <span class="metric-change positive">+12.5%</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Active Stores</h3>
+                        <p class="metric-value" id="activeStores">24</p>
+                        <span class="metric-change positive">+2</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Products Displayed</h3>
+                        <p class="metric-value" id="productsDisplayed">156</p>
+                        <span class="metric-change positive">+8</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Revenue Generated</h3>
+                        <p class="metric-value" id="revenueGenerated">$12,450</p>
+                        <span class="metric-change positive">+15.2%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Product Performance -->
+                <div class="card product-performance">
+                    <div class="card-header">
+                        <h2><i class="fas fa-chart-bar"></i> Product Performance</h2>
+                        <div class="card-actions">
+                            <select id="timeFilter" onchange="filterByTime()">
+                                <option value="1h">Last 1 Hour</option>
+                                <option value="24h">Last 24 Hours</option>
+                                <option value="7d">Last 7 Days</option>
+                                <option value="30d">Last 30 Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="product-list" id="productList">
+                            <!-- Products will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Store Performance -->
+                <div class="card store-performance">
+                    <div class="card-header">
+                        <h2><i class="fas fa-map-marker-alt"></i> Store Performance</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="store-list" id="storeList">
+                            <!-- Stores will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Engagement Analytics -->
+                <div class="card engagement-analytics">
+                    <div class="card-header">
+                        <h2><i class="fas fa-analytics"></i> Engagement Analytics</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="engagement-metrics">
+                            <div class="engagement-item">
+                                <div class="engagement-label">Click-Through Rate</div>
+                                <div class="engagement-value">3.2%</div>
+                                <div class="engagement-bar">
+                                    <div class="engagement-fill" style="width: 32%"></div>
+                                </div>
+                            </div>
+                            <div class="engagement-item">
+                                <div class="engagement-label">Dwell Time</div>
+                                <div class="engagement-value">45s</div>
+                                <div class="engagement-bar">
+                                    <div class="engagement-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="engagement-item">
+                                <div class="engagement-label">Conversion Rate</div>
+                                <div class="engagement-value">1.8%</div>
+                                <div class="engagement-bar">
+                                    <div class="engagement-fill" style="width: 18%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Recommendations -->
+                <div class="card pricing-recommendations">
+                    <div class="card-header">
+                        <h2><i class="fas fa-dollar-sign"></i> Pricing Recommendations</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="pricing-list" id="pricingList">
+                            <!-- Pricing recommendations will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
