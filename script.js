@@ -110,7 +110,44 @@ document.addEventListener('DOMContentLoaded', function() {
     populateDashboard();
     setInterval(updateCurrentTime, 1000);
     setInterval(simulateRealTimeUpdates, 30000); // Update every 30 seconds
+    
+    // Mobile-specific optimizations
+    setupMobileOptimizations();
 });
+
+// Mobile-specific optimizations
+function setupMobileOptimizations() {
+    // Prevent zoom on double tap
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+    
+    // Optimize touch interactions
+    document.addEventListener('touchstart', function() {}, {passive: true});
+    
+    // Handle orientation changes
+    window.addEventListener('orientationchange', function() {
+        setTimeout(function() {
+            // Recalculate layout after orientation change
+            window.scrollTo(0, 0);
+        }, 100);
+    });
+    
+    // Add mobile-specific CSS classes
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        document.body.classList.add('mobile-device');
+    }
+    
+    // Optimize for touch devices
+    if ('ontouchstart' in window) {
+        document.body.classList.add('touch-device');
+    }
+}
 
 // Update current time display
 function updateCurrentTime() {

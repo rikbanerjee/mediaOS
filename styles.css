@@ -431,18 +431,58 @@ body {
         text-align: center;
     }
     
+    .header h1 {
+        font-size: 24px;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .time-display {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
     .metrics-row {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .metric-card {
+        padding: 20px;
+        gap: 12px;
+    }
+    
+    .metric-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .metric-value {
+        font-size: 24px;
     }
     
     .content-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .card-header {
         flex-direction: column;
         gap: 16px;
         align-items: flex-start;
+        padding: 20px;
+    }
+    
+    .card-header h2 {
+        font-size: 18px;
+    }
+    
+    .card-content {
+        padding: 20px;
     }
     
     .product-item,
@@ -451,12 +491,281 @@ body {
         flex-direction: column;
         gap: 12px;
         text-align: center;
+        padding: 12px;
     }
     
     .product-stats,
     .store-stats,
     .pricing-recommendation {
         text-align: center;
+    }
+    
+    .product-impressions,
+    .store-impressions,
+    .pricing-amount {
+        font-size: 18px;
+    }
+    
+    .engagement-value {
+        font-size: 20px;
+    }
+}
+
+/* iPhone Specific Optimizations */
+@media (max-width: 480px) {
+    .container {
+        padding: 8px;
+    }
+    
+    .header {
+        padding: 16px 20px;
+        margin-bottom: 20px;
+    }
+    
+    .header h1 {
+        font-size: 20px;
+        gap: 8px;
+    }
+    
+    .header h1 i {
+        font-size: 18px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .metrics-row {
+        gap: 12px;
+    }
+    
+    .metric-card {
+        padding: 16px;
+        gap: 10px;
+    }
+    
+    .metric-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .metric-content h3 {
+        font-size: 12px;
+    }
+    
+    .metric-value {
+        font-size: 20px;
+    }
+    
+    .metric-change {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+    
+    .content-grid {
+        gap: 16px;
+    }
+    
+    .card-header {
+        padding: 16px 20px;
+    }
+    
+    .card-header h2 {
+        font-size: 16px;
+        gap: 8px;
+    }
+    
+    .card-header h2 i {
+        font-size: 14px;
+    }
+    
+    .card-content {
+        padding: 16px 20px;
+    }
+    
+    .product-list,
+    .store-list,
+    .pricing-list {
+        gap: 12px;
+    }
+    
+    .product-item,
+    .store-item,
+    .pricing-item {
+        padding: 12px;
+        gap: 8px;
+    }
+    
+    .product-name,
+    .store-name,
+    .pricing-location {
+        font-size: 14px;
+    }
+    
+    .product-location,
+    .store-location,
+    .pricing-details {
+        font-size: 12px;
+    }
+    
+    .product-impressions,
+    .store-impressions,
+    .pricing-amount {
+        font-size: 16px;
+    }
+    
+    .product-time,
+    .store-time,
+    .pricing-reason {
+        font-size: 10px;
+    }
+    
+    .engagement-metrics {
+        gap: 16px;
+    }
+    
+    .engagement-label {
+        font-size: 12px;
+    }
+    
+    .engagement-value {
+        font-size: 18px;
+    }
+    
+    .engagement-bar {
+        height: 6px;
+    }
+    
+    .card-actions select {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* iPhone Landscape Mode */
+@media (max-width: 896px) and (orientation: landscape) {
+    .header-content {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Touch-friendly interactions for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .product-item,
+    .store-item,
+    .pricing-item {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(66, 153, 225, 0.1);
+    }
+    
+    .product-item:active,
+    .store-item:active,
+    .pricing-item:active {
+        transform: scale(0.98);
+        background: #edf2f7;
+    }
+    
+    .btn:active {
+        transform: scale(0.95);
+    }
+    
+    .metric-card:active {
+        transform: translateY(-2px);
+    }
+}
+
+/* Safe area support for iPhone X and newer */
+@supports (padding: max(0px)) {
+    .container {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
+    
+    .header {
+        padding-left: max(30px, env(safe-area-inset-left));
+        padding-right: max(30px, env(safe-area-inset-right));
+    }
+    
+    @media (max-width: 480px) {
+        .container {
+            padding-left: max(8px, env(safe-area-inset-left));
+            padding-right: max(8px, env(safe-area-inset-right));
+        }
+        
+        .header {
+            padding-left: max(20px, env(safe-area-inset-left));
+            padding-right: max(20px, env(safe-area-inset-right));
+        }
+    }
+}
+
+/* Mobile-specific optimizations */
+.mobile-device {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.touch-device .product-item,
+.touch-device .store-item,
+.touch-device .pricing-item {
+    -webkit-tap-highlight-color: rgba(66, 153, 225, 0.1);
+}
+
+/* Prevent text selection on mobile */
+@media (max-width: 768px) {
+    .metric-value,
+    .product-impressions,
+    .store-impressions,
+    .pricing-amount {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+}
+
+/* Optimize scrolling on mobile */
+@media (max-width: 768px) {
+    body {
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+    
+    .dashboard {
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+}
+
+/* Mobile-specific button improvements */
+@media (max-width: 480px) {
+    .btn {
+        min-height: 44px; /* Apple's recommended minimum touch target size */
+        min-width: 44px;
+    }
+    
+    .card-actions select {
+        min-height: 44px;
+    }
+}
+
+/* Optimize modal for mobile */
+@media (max-width: 480px) {
+    .modal-content {
+        margin: 20px;
+        max-width: calc(100% - 40px);
+        width: calc(100% - 40px);
     }
 }
 
